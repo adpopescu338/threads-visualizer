@@ -57,12 +57,13 @@ export const WorkerImg: React.FC<
 
     // Update the previous task ID
     setPrevTaskId(task.id)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [task?.id, completionPercentage, prevTaskId])
 
   return (
     <img
       ref={imgRef}
-      src='/cpu-worker.png'
+      src='/threads-visualizer/cpu-worker.png'
       alt='matrix'
       style={{
         position: 'absolute',
