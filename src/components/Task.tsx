@@ -1,12 +1,14 @@
 import { Typography } from '@mui/material'
 import { useEffect, useMemo, useState } from 'react'
+import CancelIcon from '@mui/icons-material/Cancel'
+import IconButton from '@mui/material/IconButton'
 
 export type TaskProps = {
   duration: number
   index: number
   id: string
   completionUnits: number
-  fatherPleaseEndMySuffering: () => void
+  fatherPleaseEndMySuffering: (userDeletedMe?: boolean) => void
 }
 
 const getRandomZerosAndOnes = (duration: number) =>
@@ -83,19 +85,41 @@ export const Task: React.FC<TaskProps> = ({
       <Typography
         variant='h5'
         style={{
-          padding: '5px',
+          padding: '10px',
           borderRadius: '5px',
           backgroundColor: 'white',
           color: 'black',
           position: 'absolute',
+          whiteSpace: 'nowrap',
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
         }}
       >
+        <div
+          style={{
+            position: 'relative',
+          }}
+        >
+          <div style={deleteButtonContainerStyles}>
+            <IconButton
+              color='error'
+              onClick={() => fatherPleaseEndMySuffering(true)}
+            >
+              <CancelIcon />
+            </IconButton>
+          </div>
+        </div>
         Task {index + 1}
       </Typography>
       {randomZerosAndOnes}
     </div>
   )
 }
+
+const deleteButtonContainerStyles = {
+  position: 'absolute',
+  top: -34,
+  right: -34,
+  padding: '10px',
+} as const

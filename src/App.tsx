@@ -56,7 +56,11 @@ function App() {
       duration,
       index: taskIndex,
       completionUnits: 0,
-      fatherPleaseEndMySuffering: () => {
+      fatherPleaseEndMySuffering: (userDeletedMe?: boolean) => {
+        if (userDeletedMe) {
+          // remove the task from the core
+          removeTaskFromCore(coreWithLeastTasks.id, id)
+        }
         const thereAreIncompleteTasks = coreWithLeastTasks.tasks.some(
           (task) => task.completionUnits < task.duration
         )

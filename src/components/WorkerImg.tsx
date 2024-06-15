@@ -57,8 +57,8 @@ export const WorkerImg: React.FC<
 
     // Update the previous task ID
     setPrevTaskId(task.id)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [task?.id, completionPercentage, prevTaskId])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [task?.id, completionPercentage, prevTaskId, tasks.length])
 
   return (
     <img
